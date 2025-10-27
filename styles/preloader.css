@@ -5,7 +5,9 @@
   justify-content: center;
   align-items: center;
   background: #545050;
-}
+  z-index: 1000;
+  pointer-events: auto;
+} /* <-- добавлена закрывающая скобка */
 
 .preloader-chasing-squares {
   width: 50px;
