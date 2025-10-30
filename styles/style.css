@@ -6,16 +6,26 @@
 
 html {
   block-size: 100%;
+  overflow-x: hidden; /* запрет горизонтальной прокрутки */
+
 }
 
 .page {
-  inline-size: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  
+  inline-size: 100%;
+  max-inline-size: 1200px;
   block-size: 100%;
-  margin: auto;
+  margin: 0 auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+
+  
 }
 
 h1,
@@ -49,3 +59,349 @@ ol {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
 }
+
+
+
+.content {
+  display: grid;
+  grid-template-columns: 711px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "result details";
+
+  align-items: end;
+  justify-content: center;
+  column-gap: 30px;
+  
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 30px;
+  margin: 0 auto;
+  height: 534px;
+  
+  
+}
+
+.result {
+  grid-area: result;
+}
+.result__video-container {
+  position: relative;
+  width: 711px;
+  height: 386px;
+  
+  margin-bottom: 16px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.search-form:last-child { /*БЛОК С ВЫБОРОМ ВРЕМЯ СУТОК*/
+  min-width: 212px;
+  min-height: 49px;
+}
+
+.search-form__fieldset { /* БЛОК С ГОРОДОМ*/
+  border: none;
+  width: 225px;
+  min-width: 0;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.search-form__fieldset:nth-child(2) {
+  max-height: 49px;
+}
+
+.search-form__fieldset-title { /* НАЗВАНИЕ ГОРОДА В КАРТОЧКЕ*/
+  display: block;
+  font-weight: 400;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.search-form__textfield:focus,
+.search-form__textfield:focus-visible,
+.search-form__checkbox:focus,
+.search-form__checkbox:focus-visible {
+  outline: none;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 2px solid white;
+  outline-offset: 1px;
+}
+
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: 2px solid white;
+  
+}
+
+.search-form__checkbox:active {
+  background-color: transparent;
+}
+
+
+.search-form__label:first-child {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.search-form__label:nth-child(2) {
+  margin-right: 6px;
+  max-height: 20px;
+}
+.search-form__label:last-child {
+  width: 62px;
+  margin-right: 0;
+}
+
+.search-form__label-text:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.search-form__textfield { /* ИНПУТ города*/
+  background-color: transparent;
+  width: 100%;
+  min-width: 0;
+  min-height: 27px;
+  color: white;
+  font-size: 18px;
+
+  border: none;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 0;
+}
+.search-form__textfield::placeholder{ /* ДЛЯ ИНПУТА ОНЛИ ТЕКСТ*/
+  font-size: 16.5px;
+  font-weight: 400;
+  width: 211px;
+  color: white;
+  opacity: 70%;
+ 
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  appearance: none;
+  width: 19px;
+  height: 19px;
+  border: 1px solid white;
+  border-radius: 0;
+  background: transparent;
+  display: inline-block;
+  margin-right: 3px;
+  vertical-align: middle;
+  position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 0;
+  transform: translate(-50%, -50%);
+}
+
+.search-form__submit-button {
+  margin-top: 19.6px;
+  max-height: 34px;
+  max-width: 194px;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  border: 1px solid white;
+  color: white;
+  padding: 0px 70px;
+}
+.search-form__submit-button:focus {
+  outline: none;
+}
+.search-form__submit-button:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 1px;
+}
+
+.search-form__submit-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.search-form__submit-button:active {
+  background-color: #545050;
+}
+
+.content__details {
+  grid-area: details;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  height: 534px;
+}
+
+.title {
+  margin-bottom: 26px;
+  font-family: 'Oswald';
+  font-size: 75px;
+  font-weight: 800;
+  line-height: 0.9em;
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: #545050;
+  line-height: 94%;
+}
+
+.content__list-container {
+  position: relative;
+  /* добавлено: чтобы абсолютный .preloader позиционировался относительно этого контейнера */
+
+  width: 397px;
+  height: 298px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  
+}
+
+.content__list-item {
+  gap: 30px;
+  padding: 3px 3px;
+}
+
+
+.content__card-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
+  
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+a.content__card-link.content__card-link_current {
+  background-color: #545050;
+}
+
+.content__video-card { 
+  display: flex;
+  align-items: flex-start;
+  margin-right: 3px;
+  min-width: 0;
+}
+.content__video-card:focus{
+  outline: none;
+  border-radius: 0;
+}
+
+.content__video-card:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 1px;
+
+  border-radius: 0;
+}
+.content__video-card:active {
+  background-color: #545050;
+}
+
+.content__video-card:hover {
+  cursor: pointer; 
+}
+
+.content__card-link:hover .content__video-card-title,
+.content__card-link:hover .content__video-card-description {
+  text-decoration: underline;
+}
+a.content__card-link:hover .content__video-card-title,
+a.content__card-link:hover .content__video-card-description {
+  text-decoration: underline;
+}
+
+.content__video-card-description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.content__video-card-title,
+.content__video-card-description {
+  width: 100%;
+}
+
+.content__video-card-title {
+  font-size: 30px;
+  font-weight: 800;
+  width: 192px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 6px;
+}
+
+.content__video-card-description {
+  font-size: 18px;
+  line-height: 16.2px;
+  width: 192px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+}
+
+.content__video-card-thumbnail {
+  width: 194px;
+  height: 103px;
+  object-fit: cover;
+  object-position: center;
+
+  flex-shrink: 0;
+}
+
+.more-button {
+  display: inline-block;
+  margin-top: 30px;
+  margin-right: 3px;
+  width: 390px;
+  height: 34px;
+  justify-self: center;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 800;
+  border: 1px solid white;
+  color: white;
+}
+
+.content__card-link_current {
+  background-color: #545050;
+}
+
+
