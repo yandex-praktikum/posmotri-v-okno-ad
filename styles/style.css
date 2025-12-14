@@ -156,8 +156,8 @@ button {
   font-family: "Fira Sans Condensed";
   font-weight: 400;
   font-size: 18px;
-  cursor: pointer;
 }
+
 button:hover {
   text-decoration: underline;
 }
